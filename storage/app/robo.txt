@@ -1,0 +1,27 @@
+//Model
+public function country()
+{
+  return $this->belongsTo(Country::class);
+}
+public function user()
+{
+  return $this->belongsTo(User::class);
+}
+public function bank()
+{
+  return $this->belongsTo(Bank::class);
+}
+
+    
+    
+//Migration
+$table->unsignedBigInteger('bank_id');
+$table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade');
+    
+    
+$table->unsignedBigInteger('country_id');
+$table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+
+
+$table->unsignedBigInteger('user_id');
+$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
